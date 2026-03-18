@@ -1,0 +1,258 @@
+.docs-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.docs-sidebar {
+  width: 260px;
+  background: #0d0d0d;
+  border-right: 1px solid #333;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.docs-sidebar__logo {
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.docs-sidebar__title {
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 24px;
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+  letter-spacing: 2px;
+}
+
+.docs-sidebar__subtitle {
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.docs-sidebar__nav {
+  padding: 16px 0;
+}
+
+.docs-sidebar__section {
+  padding: 8px 24px 4px;
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.docs-sidebar__link {
+  display: block;
+  padding: 8px 24px;
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 13px;
+  color: #aaa;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-left: 2px solid transparent;
+}
+
+.docs-sidebar__link:hover {
+  color: #0f0;
+  background: rgba(0, 255, 0, 0.05);
+  text-shadow: none;
+}
+
+.docs-sidebar__link--active {
+  color: #0f0;
+  border-left-color: #0f0;
+  background: rgba(0, 255, 0, 0.08);
+}
+
+/* Main content */
+.docs-main {
+  margin-left: 260px;
+  flex: 1;
+  min-width: 0;
+}
+
+.docs-content {
+  max-width: 900px;
+  padding: 48px 48px 80px;
+}
+
+/* Page header */
+.docs-page-title {
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 32px;
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+  margin-bottom: 8px;
+}
+
+.docs-page-desc {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Component showcase */
+.docs-section {
+  margin-bottom: 48px;
+}
+
+.docs-section__title {
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 16px;
+  color: #0f0;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #222;
+}
+
+.docs-preview {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 12px;
+}
+
+.docs-preview--row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.docs-preview--col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.docs-props-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+.docs-props-table th {
+  text-align: left;
+  padding: 10px 16px;
+  background: #111;
+  color: #0f0;
+  border: 1px solid #333;
+  font-weight: normal;
+}
+
+.docs-props-table td {
+  padding: 10px 16px;
+  border: 1px solid #222;
+  color: #ccc;
+}
+
+.docs-props-table td:first-child {
+  color: #0f0;
+}
+
+.docs-props-table td:nth-child(2) {
+  color: #f7bb3b;
+}
+
+/* Landing page */
+.docs-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+  text-align: center;
+  padding: 48px;
+}
+
+.docs-hero__title {
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 72px;
+  color: #0f0;
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.5), 0 0 40px rgba(0, 255, 0, 0.2);
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.docs-hero__tagline {
+  font-size: 20px;
+  color: #aaa;
+  margin-bottom: 40px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.docs-hero__actions {
+  display: flex;
+  gap: 16px;
+}
+
+.docs-hero__stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 64px;
+}
+
+.docs-hero__stat-value {
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 28px;
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+}
+
+.docs-hero__stat-label {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Install snippet */
+.docs-install {
+  background: #000;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 14px;
+  color: #0f0;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docs-install__prompt {
+  color: #888;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .docs-sidebar {
+    display: none;
+  }
+  .docs-main {
+    margin-left: 0;
+  }
+  .docs-content {
+    padding: 24px;
+  }
+  .docs-hero__title {
+    font-size: 40px;
+  }
+}
