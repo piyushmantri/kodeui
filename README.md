@@ -8,7 +8,7 @@ A cyberpunk-themed React component library inspired by [KodePad](https://github.
 
 ## Features
 
-- 16 fully typed React components
+- 17 fully typed React components
 - Cyberpunk aesthetic with neon green glow effects
 - Zero external dependencies (just React + CSS)
 - CSS custom properties for easy theming
@@ -63,6 +63,7 @@ function App() {
 | `CodeBlock`   | Code display with copy-to-clipboard               |
 | `Divider`     | Separator with optional neon glow                 |
 | `Kbd`         | Keyboard shortcut display                         |
+| `Chat`        | Chat interface with bubbles, typing indicator     |
 
 ## Theming
 

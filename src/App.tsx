@@ -9,6 +9,7 @@ import {
   BadgePage, CardPage, ModalPage, TabsPage,
   AlertPage, SwitchPage, SpinnerPage, TooltipPage,
   AvatarPage, CodeBlockPage, DividerPage, KbdPage,
+  ChatPage,
 } from './docs/pages/ComponentPages'
 
 const componentRoutes: Record<string, React.FC> = {
@@ -28,6 +29,7 @@ const componentRoutes: Record<string, React.FC> = {
   codeblock: CodeBlockPage,
   divider: DividerPage,
   kbd: KbdPage,
+  chat: ChatPage,
 }
 
 export const App: React.FC = () => (

@@ -7,6 +7,7 @@ const components = [
   'Badge', 'Card', 'Modal', 'Tabs',
   'Alert', 'Switch', 'Spinner', 'Tooltip',
   'Avatar', 'CodeBlock', 'Divider', 'Kbd',
+  'Chat',
 ]
 
 export const DocsLayout: React.FC = () => (

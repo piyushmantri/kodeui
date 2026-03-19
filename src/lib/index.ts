@@ -47,3 +47,6 @@ export type { DividerProps } from './components/Divider'
 
 export { Kbd } from './components/Kbd'
 export type { KbdProps } from './components/Kbd'
+
+export { Chat } from './components/Chat'
+export type { ChatProps, ChatMessage } from './components/Chat'

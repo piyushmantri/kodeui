@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import {
   Button, Input, TextArea, Select, Badge, Card, CardHeader, CardTitle, CardBody, CardFooter,
-  Modal, Tabs, Alert, Switch, Spinner, Tooltip, Avatar, CodeBlock, Divider, Kbd,
+  Modal, Tabs, Alert, Switch, Spinner, Tooltip, Avatar, CodeBlock, Divider, Kbd, Chat,
 } from '../../lib'
+import type { ChatMessage } from '../../lib'
 
 interface DocPageProps {
   title: string
@@ -403,3 +404,111 @@ export const KbdPage: React.FC = () => (
     </Section>
   </DocPage>
 )
+
+// ─── Chat ───
+const demoMessages: ChatMessage[] = [
+  { id: '1', content: 'Hey, did you solve the two-sum problem?', sender: 'incoming', senderName: 'Neo', timestamp: '21:30' },
+  { id: '2', content: 'Yeah, used a hash map approach. O(n) time.', sender: 'outgoing', senderName: 'You', timestamp: '21:31' },
+  { id: '3', content: 'Nice. Can you share the code?', sender: 'incoming', senderName: 'Neo', timestamp: '21:31' },
+  { id: '4', content: 'Sure, pushing it to the repo now.', sender: 'outgoing', senderName: 'You', timestamp: '21:32' },
+]
+
+export const ChatPage: React.FC = () => {
+  const [messages, setMessages] = useState<ChatMessage[]>(demoMessages)
+  const [typing, setTyping] = useState(false)
+
+  const handleSend = (content: string) => {
+    setMessages(prev => [...prev, {
+      id: String(Date.now()),
+      content,
+      sender: 'outgoing',
+      senderName: 'You',
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    }])
+    setTyping(true)
+    setTimeout(() => {
+      setTyping(false)
+      setMessages(prev => [...prev, {
+        id: String(Date.now() + 1),
+        content: 'Roger that. Pulling now.',
+        sender: 'incoming',
+        senderName: 'Neo',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      }])
+    }, 1500)
+  }
+
+  return (
+    <DocPage title="Chat" description="Real-time chat interface with message bubbles, typing indicator, and auto-scroll.">
+      <Section title="Interactive Demo">
+        <Preview>
+          <Chat
+            messages={messages}
+            onSend={handleSend}
+            title="Neo"
+            subtitle="online"
+            avatarInitials="NA"
+            typing={typing}
+            typingText="Neo is typing"
+            placeholder="Type a message..."
+          />
+        </Preview>
+        <CodeBlock language="tsx" code={`const [messages, setMessages] = useState<ChatMessage[]>([])
+
+<Chat
+  messages={messages}
+  onSend={(text) => setMessages(prev => [...prev, {
+    id: String(Date.now()),
+    content: text,
+    sender: 'outgoing',
+    senderName: 'You',
+    timestamp: '21:32',
+  }])}
+  title="Neo"
+  subtitle="online"
+  typing={isTyping}
+  typingText="Neo is typing"
+/>`} />
+      </Section>
+      <Section title="Glow Variant">
+        <Preview>
+          <Chat
+            messages={demoMessages.slice(0, 2)}
+            title="Trinity"
+            subtitle="offline"
+            avatarInitials="T"
+            glow
+            placeholder="Encrypted channel..."
+          />
+        </Preview>
+      </Section>
+      <Section title="Props">
+        <table className="docs-props-table">
+          <thead><tr><th>Prop</th><th>Type</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td>messages</td><td>ChatMessage[]</td><td>required</td></tr>
+            <tr><td>onSend</td><td>(message: string) =&gt; void</td><td>-</td></tr>
+            <tr><td>title</td><td>string</td><td>'Chat'</td></tr>
+            <tr><td>subtitle</td><td>string</td><td>-</td></tr>
+            <tr><td>avatarSrc</td><td>string</td><td>-</td></tr>
+            <tr><td>avatarInitials</td><td>string</td><td>-</td></tr>
+            <tr><td>placeholder</td><td>string</td><td>'Type a message...'</td></tr>
+            <tr><td>typing</td><td>boolean</td><td>false</td></tr>
+            <tr><td>typingText</td><td>string</td><td>'typing'</td></tr>
+            <tr><td>glow</td><td>boolean</td><td>false</td></tr>
+            <tr><td>headerActions</td><td>ReactNode</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </Section>
+      <Section title="ChatMessage Type">
+        <CodeBlock language="tsx" code={`interface ChatMessage {
+  id: string
+  content: string
+  sender: 'incoming' | 'outgoing'
+  senderName?: string
+  timestamp?: string
+}`} />
+      </Section>
+    </DocPage>
+  )
+}

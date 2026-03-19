@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => {
       </div>
       <div className="docs-hero__stats">
         <div>
-          <div className="docs-hero__stat-value">16</div>
+          <div className="docs-hero__stat-value">17</div>
           <div className="docs-hero__stat-label">Components</div>
         </div>
         <div>
