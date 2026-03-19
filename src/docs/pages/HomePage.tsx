@@ -10,7 +10,7 @@ export const HomePage: React.FC = () => {
       <Badge variant="default" pill>Open Source</Badge>
       <h1 className="docs-hero__title">KodeUI</h1>
       <p className="docs-hero__tagline">
-        A cyberpunk-themed React component library. Dark mode. Neon glow. Built for hackers.
+        A hacker-inspired React component library. Dark mode. Neon glow. Built for builders.
       </p>
       <div className="docs-hero__actions">
         <Button variant="filled" size="lg" onClick={() => navigate('/getting-started')}>
@@ -53,7 +53,7 @@ export const HomePage: React.FC = () => {
         <Card hoverable>
           <CardBody>
             <div style={{ color: '#0f0', fontFamily: 'monospace', marginBottom: 8 }}>// Glow Effects</div>
-            Neon glow shadows and text effects for that cyberpunk feel.
+            Neon glow shadows and text effects for that hacker feel.
           </CardBody>
         </Card>
         <Card hoverable>

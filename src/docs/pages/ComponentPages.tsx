@@ -34,7 +34,7 @@ const Preview: React.FC<{ row?: boolean; children: React.ReactNode }> = ({ row, 
 
 // ─── Button ───
 export const ButtonPage: React.FC = () => (
-  <DocPage title="Button" description="Clickable actions with cyberpunk glow effects.">
+  <DocPage title="Button" description="Clickable actions with neon glow effects.">
     <Section title="Variants">
       <Preview row>
         <Button variant="primary">Primary</Button>

@@ -2,7 +2,7 @@
   "name": "kodeui",
   "private": false,
   "version": "1.0.0",
-  "description": "A cyberpunk-themed React component library inspired by KodePad",
+  "description": "A hacker-inspired React component library inspired by KodePad",
   "type": "module",
   "main": "dist/kodeui.umd.cjs",
   "module": "dist/kodeui.js",

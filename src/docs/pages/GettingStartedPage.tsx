@@ -4,7 +4,7 @@ import { CodeBlock, Alert } from '../../lib'
 export const GettingStartedPage: React.FC = () => (
   <>
     <h1 className="docs-page-title">Getting Started</h1>
-    <p className="docs-page-desc">Install KodeUI and start building cyberpunk interfaces in minutes.</p>
+    <p className="docs-page-desc">Install KodeUI and start building sleek dark interfaces in minutes.</p>
 
     <div className="docs-section">
       <h2 className="docs-section__title">Installation</h2>

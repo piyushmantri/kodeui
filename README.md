@@ -1,6 +1,6 @@
 # KodeUI
 
-A cyberpunk-themed React component library inspired by [KodePad](https://github.com/piyushmantri/kodepad). Dark mode. Neon glow. Built for hackers.
+A hacker-inspired React component library inspired by [KodePad](https://github.com/piyushmantri/kodepad). Dark mode. Neon glow. Built for hackers.
 
 [![Deploy to GitHub Pages](https://github.com/piyushmantri/kodeui/actions/workflows/deploy.yml/badge.svg)](https://github.com/piyushmantri/kodeui/actions/workflows/deploy.yml)
 
@@ -9,7 +9,7 @@ A cyberpunk-themed React component library inspired by [KodePad](https://github.
 ## Features
 
 - 17 fully typed React components
-- Cyberpunk aesthetic with neon green glow effects
+- Hacker-inspired aesthetic with neon green glow effects
 - Zero external dependencies (just React + CSS)
 - CSS custom properties for easy theming
 - TypeScript support out of the box
