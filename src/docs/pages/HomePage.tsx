@@ -10,7 +10,7 @@ export const HomePage: React.FC = () => {
       <Badge variant="default" pill>Open Source</Badge>
       <h1 className="docs-hero__title">KodeUI</h1>
       <p className="docs-hero__tagline">
-        A hacker-inspired React component library. Dark mode. Neon glow. Built for builders.
+        A React component library forged in the terminal. Dark by design. Neon by nature.
       </p>
       <div className="docs-hero__actions">
         <Button variant="filled" size="lg" onClick={() => navigate('/getting-started')}>
