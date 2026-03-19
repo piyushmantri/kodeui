@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import './DocsLayout.css'
 
 const components = [
@@ -10,52 +10,80 @@ const components = [
   'Chat',
 ]
 
-export const DocsLayout: React.FC = () => (
-  <div className="docs-layout">
-    <aside className="docs-sidebar">
-      <div className="docs-sidebar__logo">
-        <NavLink to="/">
-          <div className="docs-sidebar__title">KodeUI</div>
-          <div className="docs-sidebar__subtitle">v1.0.0</div>
-        </NavLink>
-      </div>
-      <nav className="docs-sidebar__nav">
-        <div className="docs-sidebar__section">Getting Started</div>
-        <NavLink
-          to="/getting-started"
-          className={({ isActive }) =>
-            `docs-sidebar__link ${isActive ? 'docs-sidebar__link--active' : ''}`
-          }
-        >
-          Installation
-        </NavLink>
-        <NavLink
-          to="/theme"
-          className={({ isActive }) =>
-            `docs-sidebar__link ${isActive ? 'docs-sidebar__link--active' : ''}`
-          }
-        >
-          Theme & Tokens
-        </NavLink>
+export const DocsLayout: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
-        <div className="docs-sidebar__section" style={{ marginTop: 16 }}>Components</div>
-        {components.map(name => (
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
+  return (
+    <div className="docs-layout">
+      <button
+        className="docs-menu-toggle"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span className={`docs-menu-toggle__icon ${menuOpen ? 'docs-menu-toggle__icon--open' : ''}`} />
+      </button>
+
+      {menuOpen && <div className="docs-sidebar-overlay" onClick={() => setMenuOpen(false)} />}
+
+      <aside className={`docs-sidebar ${menuOpen ? 'docs-sidebar--open' : ''}`}>
+        <div className="docs-sidebar__logo">
+          <NavLink to="/">
+            <div className="docs-sidebar__title">KodeUI</div>
+            <div className="docs-sidebar__subtitle">v1.0.0</div>
+          </NavLink>
+        </div>
+        <nav className="docs-sidebar__nav">
+          <div className="docs-sidebar__section">Getting Started</div>
           <NavLink
-            key={name}
-            to={`/components/${name.toLowerCase()}`}
+            to="/getting-started"
             className={({ isActive }) =>
               `docs-sidebar__link ${isActive ? 'docs-sidebar__link--active' : ''}`
             }
           >
-            {name}
+            Installation
           </NavLink>
-        ))}
-      </nav>
-    </aside>
-    <main className="docs-main">
-      <div className="docs-content">
-        <Outlet />
-      </div>
-    </main>
-  </div>
-)
+          <NavLink
+            to="/theme"
+            className={({ isActive }) =>
+              `docs-sidebar__link ${isActive ? 'docs-sidebar__link--active' : ''}`
+            }
+          >
+            Theme & Tokens
+          </NavLink>
+
+          <div className="docs-sidebar__section" style={{ marginTop: 16 }}>Components</div>
+          {components.map(name => (
+            <NavLink
+              key={name}
+              to={`/components/${name.toLowerCase()}`}
+              className={({ isActive }) =>
+                `docs-sidebar__link ${isActive ? 'docs-sidebar__link--active' : ''}`
+              }
+            >
+              {name}
+            </NavLink>
+          ))}
+        </nav>
+      </aside>
+      <main className="docs-main">
+        <div className="docs-content">
+          <Outlet />
+        </div>
+      </main>
+    </div>
+  )
+}
