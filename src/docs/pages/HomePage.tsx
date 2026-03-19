@@ -66,7 +66,7 @@ export const HomePage: React.FC = () => {
 
       <div style={{ marginTop: 48, width: '100%', maxWidth: 600 }}>
         <Alert variant="info">
-          This entire component library and documentation website was built completely by AI using Claude Code.
+          This entire component library and documentation website was built completely by AI.
         </Alert>
       </div>
     </div>
