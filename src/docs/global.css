@@ -10,6 +10,12 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="light"] body {
+  background: #f4f4f4;
+  color: #1a1a1a;
 }
 
 a {
@@ -17,8 +23,16 @@ a {
   text-decoration: none;
 }
 
+[data-theme="light"] a {
+  color: #007700;
+}
+
 a:hover {
   text-shadow: 0 0 5px #0f0;
+}
+
+[data-theme="light"] a:hover {
+  text-shadow: 0 0 5px rgba(0, 119, 0, 0.4);
 }
 
 ::-webkit-scrollbar {
@@ -37,4 +51,16 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #e8e8e8;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }

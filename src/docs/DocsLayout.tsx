@@ -12,6 +12,9 @@ const components = [
 
 export const DocsLayout: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [lightTheme, setLightTheme] = useState(() => {
+    return localStorage.getItem('kodeui-theme') === 'light'
+  })
   const location = useLocation()
 
   useEffect(() => {
@@ -27,6 +30,16 @@ export const DocsLayout: React.FC = () => {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  useEffect(() => {
+    if (lightTheme) {
+      document.documentElement.setAttribute('data-theme', 'light')
+      localStorage.setItem('kodeui-theme', 'light')
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+      localStorage.setItem('kodeui-theme', 'dark')
+    }
+  }, [lightTheme])
+
   return (
     <div className="docs-layout">
       <button
@@ -37,6 +50,15 @@ export const DocsLayout: React.FC = () => {
         <span className={`docs-menu-toggle__icon ${menuOpen ? 'docs-menu-toggle__icon--open' : ''}`} />
       </button>
 
+      <button
+        className="docs-theme-toggle-mobile"
+        onClick={() => setLightTheme(t => !t)}
+        aria-label={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'}
+        title={lightTheme ? 'Dark mode' : 'Light mode'}
+      >
+        {lightTheme ? '◐' : '◑'}
+      </button>
+
       {menuOpen && <div className="docs-sidebar-overlay" onClick={() => setMenuOpen(false)} />}
 
       <aside className={`docs-sidebar ${menuOpen ? 'docs-sidebar--open' : ''}`}>
@@ -45,6 +67,14 @@ export const DocsLayout: React.FC = () => {
             <div className="docs-sidebar__title">KodeUI</div>
             <div className="docs-sidebar__subtitle">v1.0.0</div>
           </NavLink>
+          <button
+            className="docs-theme-toggle"
+            onClick={() => setLightTheme(t => !t)}
+            aria-label={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'}
+            title={lightTheme ? 'Dark mode' : 'Light mode'}
+          >
+            {lightTheme ? '◐' : '◑'}
+          </button>
         </div>
         <nav className="docs-sidebar__nav">
           <div className="docs-sidebar__section">Getting Started</div>
